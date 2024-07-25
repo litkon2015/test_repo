@@ -7,7 +7,7 @@ services:
       - "4444:4444"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/home/roman/PycharmProjects/test_repo/docker_compose_files/config/:/etc/selenoid/:ro"
+      - "/home/roman/PycharmProjects/test_repo/docker_compose_files/selenoid/config/:/etc/selenoid/:ro"
     command: ["-limit", "4", "-timeout", "3m", "-container-network", "bridge"]
   selenoid-ui:
     image: aerokube/selenoid-ui:latest
