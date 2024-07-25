@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestExample:
     @allure.title('Test Example')
+    @pytest.mark.smoke
     def test_example(self, browser):
         with allure.step("Step1. В поисковике google вводим текст 'Скуф' и кликаем по кнопке ENTER"):
             browser.get('https://www.google.ru/?hl=ru')
