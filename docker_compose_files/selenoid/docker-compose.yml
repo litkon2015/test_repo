@@ -1,0 +1,19 @@
+version: '3'
+services:
+  selenoid:
+    image: aerokube/selenoid:latest
+    network_mode: bridge
+    ports:
+      - "4444:4444"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/home/roman/PycharmProjects/test_repo/docker_compose_files/selenoid/config/:/etc/selenoid/:ro"
+    command: ["-limit", "4", "-timeout", "3m", "-container-network", "bridge"]
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest
+    network_mode: bridge
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
